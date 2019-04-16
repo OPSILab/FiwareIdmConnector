@@ -20,32 +20,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package it.eng.opsilab.authentication.fiware.model;
+package it.eng.opsi.authentication.fiware.configuration;
 
-import java.util.Set;
+public enum IDMProperty {
+	IDM_VERSION("idm.fiware.version"),
+	IDM_PROTOCOL("idm.protocol"),
+	IDM_HOST("idm.host"),
+	IDM_ADMIN_ROLE_NAME("idm.admin.role.name"),
+	//	IDM_PROTOCOL_DEFAULT("idm.protocol.default"),
+//	IDM_PORT_DEFAULT("idm.port.default"),
+	IDM_CLIENT_ID("idm.client.id"),
+	IDM_CLIENT_SECRET("idm.client.secret"),
+	IDM_REDIRECT_URI("idm.redirecturi"),
+	IDM_LOGOUT_CALLBACK("idm.logout.callback"),
+	IDM_PATH_BASE("idm.path.base"),
+	IDM_PATH_TOKEN("idm.path.token"),
+	IDM_PATH_USER("idm.path.user"),
+	IDM_FIWARE_KEYSTONE_HOST("idm.fiware.keystone.host"),
+	IDM_FIWARE_KEYSTONE_PORT("idm.fiware.keystone.port"),
+	IDM_FIWARE_KEYSTONE_PATH_TOKENS("idm.fiware.keystone.path.tokens");
+	
 
-@Deprecated
-public class Identity{
-	
-	private Set<String> methods;
-	private Password password;
-	
-	public Identity(Set<String> methods, Password password) {
-		super();
-		this.methods = methods;
-		this.password = password;
+	private final String text;
+
+	private IDMProperty(final String text) {
+		this.text = text;
 	}
-	public Set<String> getMethods() {
-		return methods;
+
+	@Override
+	public String toString() {
+		return text;
 	}
-	public void setMethods(Set<String> methods) {
-		this.methods = methods;
-	}
-	public Password getPassword() {
-		return password;
-	}
-	public void setPassword(Password password) {
-		this.password = password;
-	}
-	
 }

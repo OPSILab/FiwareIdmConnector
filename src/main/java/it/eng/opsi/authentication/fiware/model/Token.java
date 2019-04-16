@@ -20,12 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package it.eng.opsilab.authentication.fiware.model;
+package it.eng.opsi.authentication.fiware.model;
 
 import java.util.Set;
 
 import com.google.gson.annotations.JsonAdapter;
-import it.eng.opsilab.authentication.fiware.TokenDeserializer;
+
+import it.eng.opsi.authentication.fiware.TokenDeserializer;
 
 
 @JsonAdapter(TokenDeserializer.class)

@@ -20,24 +20,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package it.eng.opsilab.authentication.fiware.model;
+package it.eng.opsi.authentication.fiware.model;
 
 @Deprecated
-public class UserTokenBean {
+public class User{
 	
-	private Auth auth;
-
-	public UserTokenBean(Auth auth) {
+	private String name;
+	private Domain domain;
+	private String password;
+	
+	public User(String name, Domain domain, String password) {
 		super();
-		this.auth = auth;
+		this.name = name;
+		this.domain = domain;
+		this.password = password;
 	}
-
-	public Auth getAuth() {
-		return auth;
+	
+	public String getName() {
+		return name;
 	}
-
-	public void setAuth(Auth auth) {
-		this.auth = auth;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Domain getDomain() {
+		return domain;
+	}
+	public void setDomain(Domain domain) {
+		this.domain = domain;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

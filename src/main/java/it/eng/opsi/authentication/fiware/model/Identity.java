@@ -20,24 +20,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package it.eng.opsilab.authentication.fiware.model;
+package it.eng.opsi.authentication.fiware.model;
+
+import java.util.Set;
 
 @Deprecated
-public class Password{
+public class Identity{
 	
-	private User user;
+	private Set<String> methods;
+	private Password password;
 	
-	public Password(User user) {
+	public Identity(Set<String> methods, Password password) {
 		super();
-		this.user = user;
+		this.methods = methods;
+		this.password = password;
 	}
-
-	public User getUser() {
-		return user;
+	public Set<String> getMethods() {
+		return methods;
 	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setMethods(Set<String> methods) {
+		this.methods = methods;
+	}
+	public Password getPassword() {
+		return password;
+	}
+	public void setPassword(Password password) {
+		this.password = password;
 	}
 	
 }

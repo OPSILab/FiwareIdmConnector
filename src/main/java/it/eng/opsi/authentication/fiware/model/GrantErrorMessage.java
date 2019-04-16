@@ -20,30 +20,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package it.eng.opsilab.authentication.fiware.model;
+package it.eng.opsi.authentication.fiware.model;
 
-public enum FiwareIDMVersion {
+public class GrantErrorMessage {
+	
+	private int statusCode;
+	private int status;
+	private int code;
+	private String message;
+	private String name;
 
-	FIWARE_IDM_VERSION_6("6"), FIWARE_IDM_VERSION_7("7");
-
-	private final String text;
-
-	private FiwareIDMVersion(final String text) {
-		this.text = text;
+	public int getStatusCode() {
+		return statusCode;
 	}
-
-	@Override
-	public String toString() {
-		return text;
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
 	}
-
-	public static FiwareIDMVersion fromString(String text) {
-		for (FiwareIDMVersion b : FiwareIDMVersion.values()) {
-			if (b.text.equalsIgnoreCase(text)) {
-				return b;
-			}
-		}
-		return null;
+	public int getStatus() {
+		return status;
 	}
-
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public int getCode() {
+		return code;
+	}
+	public void setCode(int code) {
+		this.code = code;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

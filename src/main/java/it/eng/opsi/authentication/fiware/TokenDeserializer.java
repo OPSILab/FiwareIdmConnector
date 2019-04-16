@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package it.eng.opsilab.authentication.fiware;
+package it.eng.opsi.authentication.fiware;
 
 import java.lang.reflect.Type;
 import java.util.HashSet;
@@ -34,7 +34,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
-import it.eng.opsilab.authentication.fiware.model.Token;
+import it.eng.opsi.authentication.fiware.model.Token;
 
 public class TokenDeserializer implements JsonDeserializer<Token> {
 

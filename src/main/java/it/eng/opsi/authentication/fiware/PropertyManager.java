@@ -20,45 +20,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package it.eng.opsilab.authentication.fiware.model;
+package it.eng.opsi.authentication.fiware;
 
-public class GrantErrorMessage {
-	
-	private int statusCode;
-	private int status;
-	private int code;
-	private String message;
-	private String name;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.Properties;
 
-	public int getStatusCode() {
-		return statusCode;
+
+import it.eng.opsi.authentication.fiware.configuration.IDMProperty;
+import it.eng.opsi.restclient.configuration.RestProperty;
+
+public class PropertyManager {
+
+	private static Properties props = null;
+
+	static {
+		props = new Properties();
+		try {
+			props.load(PropertyManager.class.getClassLoader().getResourceAsStream("configuration.properties"));
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	public void setStatusCode(int statusCode) {
-		this.statusCode = statusCode;
+
+
+	public static String getProperty(IDMProperty propName) {
+		Optional<String> prop = Optional.ofNullable(System.getenv(propName.toString()));
+		return prop.orElse(props.getProperty(propName.toString()));
 	}
-	public int getStatus() {
-		return status;
+
+	public static String getProperty(RestProperty propName) {
+		Optional<String> prop = Optional.ofNullable(System.getenv(propName.toString()));
+		return prop.orElse(props.getProperty(propName.toString()));
 	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	public int getCode() {
-		return code;
-	}
-	public void setCode(int code) {
-		this.code = code;
-	}
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 }

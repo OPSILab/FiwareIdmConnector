@@ -20,39 +20,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package it.eng.opsilab.authentication.fiware.model;
+package it.eng.opsi.authentication.fiware.model;
 
 @Deprecated
-public class User{
+public class Password{
 	
-	private String name;
-	private Domain domain;
-	private String password;
+	private User user;
 	
-	public User(String name, Domain domain, String password) {
+	public Password(User user) {
 		super();
-		this.name = name;
-		this.domain = domain;
-		this.password = password;
+		this.user = user;
 	}
-	
-	public String getName() {
-		return name;
+
+	public User getUser() {
+		return user;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Domain getDomain() {
-		return domain;
-	}
-	public void setDomain(Domain domain) {
-		this.domain = domain;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

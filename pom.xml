@@ -8,6 +8,12 @@
 	<name>Fiware IdM Connector</name>
 	<packaging>jar</packaging>
 	<description>This library enables to integrate a Java Application with Fiware Keyrock (6 &amp; 7)</description>
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
@@ -22,7 +28,16 @@
 			<artifactId>json</artifactId>
 			<version>20180813</version>
 		</dependency>
-
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.OPSILab</groupId>
+			<artifactId>RestClient</artifactId>
+			<version>v0.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

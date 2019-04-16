@@ -20,44 +20,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-package it.eng.opsilab.authentication.fiware.model;
+package it.eng.opsi.authentication.fiware.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class Organization {
-
-	private String website;
-	private String description;
-	private Set<Role> roles;
-	private boolean enabled;
-	private String id;
-	private String domain_id;
+public class Role {
+		
 	private String name;
+	private String id;
 	
-	public String getWebsite() {
-		return website;
+	public Role(String name, String id) {
+		this.name = name;
+		this.id = id;
 	}
-	public void setWebsite(String website) {
-		this.website = website;
+
+	public Role(){
+		this.name = "";
+		this.id = "";
 	}
-	public String getDescription() {
-		return description;
+
+	public String getName() {
+		return name;
 	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Set<Role> getRoles() {
-		return roles;
-	}
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-	public boolean isEnabled() {
-		return enabled;
-	}
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getId() {
 		return id;
@@ -65,40 +49,28 @@ public class Organization {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getDomain_id() {
-		return domain_id;
-	}
-	public void setDomain_id(String domain_id) {
-		this.domain_id = domain_id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
-	public Organization(String website, String description, Set<Role> roles, boolean enabled, String id, String domain_id, String name) {
-	this.website = website;
-		this.description = description;
-		this.roles = roles;
-		this.enabled = enabled;
-		this.id = id;
-		this.domain_id = domain_id;
-		this.name = name;
-	}
 
-	public Organization(){
-		this.description = "";
-		this.roles = new HashSet<Role>();
-		this.enabled = true;
-		this.id = "";
-		this.domain_id = "";
-		this.name = "";
+	@Override
+	public boolean equals(Object obj) {
+
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Role other = (Role) obj;
+
+		if (this.getName().equals(other.getName())) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
+	@Override
+	public int hashCode() {
+		return this.getName().hashCode();
+	}
 	
 }
-
-
