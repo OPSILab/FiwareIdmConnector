@@ -42,6 +42,12 @@
 			<artifactId>RestClient</artifactId>
 			<version>v0.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.11</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
