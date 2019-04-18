@@ -36,6 +36,7 @@ public enum IDMProperty {
 	IDM_PATH_BASE("idm.path.base"),
 	IDM_PATH_TOKEN("idm.path.token"),
 	IDM_PATH_USER("idm.path.user"),
+	IDM_FIWARE_KEYSTONE_PROTOCOL("idm.fiware.keystone.protocol"),
 	IDM_FIWARE_KEYSTONE_HOST("idm.fiware.keystone.host"),
 	IDM_FIWARE_KEYSTONE_PORT("idm.fiware.keystone.port"),
 	IDM_FIWARE_KEYSTONE_PATH_TOKENS("idm.fiware.keystone.path.tokens");
