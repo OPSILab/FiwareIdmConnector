@@ -14,6 +14,10 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
+	<properties>
+		<servlet-version>4.0.1</servlet-version>
+	</properties>
+
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
@@ -38,8 +42,13 @@
 			<artifactId>RestClient</artifactId>
 			<version>v0.1</version>
 		</dependency>
-	</dependencies>
 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-version}</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<finalName>pdata-repository</finalName>
 		<!-- maven compiler plugin -->
