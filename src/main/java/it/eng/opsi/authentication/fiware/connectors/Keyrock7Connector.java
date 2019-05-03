@@ -66,16 +66,14 @@ public class Keyrock7Connector extends FiwareIDMConnector {
 		String authHeaderValue = "Basic "
 				+ new String(Base64.getEncoder().encode((clientId + ":" + clientSecret).getBytes()));
 		headers.add(new BasicHeader(HttpHeaders.AUTHORIZATION, authHeaderValue));
-
-		String reqData = "grant_type=authorization_code" + "&code=" + code + "&redirect_uri=" + redirectUri;
-
+		headers.add(new BasicHeader("Accept", "*/*"));
 		List<NameValuePair> bodyParams = new ArrayList<NameValuePair>();
 		bodyParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
 		bodyParams.add(new BasicNameValuePair("code", code));
 		bodyParams.add(new BasicNameValuePair("redirect_uri", redirectUri));
 
 		RestClient client = new RestClient();
-		HttpResponse response = client.sendPostRequest(url, headers, ContentType.APPLICATION_FORM_URLENCODED,
+		HttpResponse response = client.sendPostRequest(url, headers, ContentType.APPLICATION_FORM_URLENCODED.withCharset("utf-8"),
 				new UrlEncodedFormEntity(bodyParams));
 
 		String returned_json = client.getResponseBodyAsString(response);
