@@ -49,7 +49,7 @@ public class TokenDeserializer implements JsonDeserializer<Token> {
 			if (scope instanceof JSONArray) {
 				try {
 					for (Object scopeElement : ((JSONArray) scope)) {
-						scopeSet.add((String) scope);
+						scopeSet.add((String) scopeElement);
 					}
 
 				} catch (Exception e) {
