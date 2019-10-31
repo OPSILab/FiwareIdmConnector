@@ -73,21 +73,24 @@ public class Keyrock7Connector extends FiwareIDMConnector {
 		bodyParams.add(new BasicNameValuePair("redirect_uri", redirectUri));
 
 		RestClient client = new RestClient();
-		HttpResponse response = client.sendPostRequest(url, headers, ContentType.APPLICATION_FORM_URLENCODED.withCharset("utf-8"),
-				new UrlEncodedFormEntity(bodyParams));
+		HttpResponse response = client.sendPostRequest(url, headers,
+				ContentType.APPLICATION_FORM_URLENCODED.withCharset("utf-8"), new UrlEncodedFormEntity(bodyParams));
+		if (response != null) {
+			String returned_json = client.getResponseBodyAsString(response);
+			switch (client.getStatus(response)) {
+			case 500:
+				GrantErrorMessage errorBody = new Gson().fromJson(returned_json, GrantErrorMessage.class);
+				throw new RuntimeException("[" + errorBody.getStatus() + "] " + errorBody.getMessage());
 
-		String returned_json = client.getResponseBodyAsString(response);
-		switch (client.getStatus(response)) {
-		case 500:
-			GrantErrorMessage errorBody = new Gson().fromJson(returned_json, GrantErrorMessage.class);
-			throw new RuntimeException("[" + errorBody.getStatus() + "] " + errorBody.getMessage());
+			default:
+				token = Optional.ofNullable(new Gson().fromJson(returned_json, Token.class));
+			}
 
-		default:
-			token = Optional.ofNullable(new Gson().fromJson(returned_json, Token.class));
+			return token.get();
+			
+		} else {
+			throw new RuntimeException("There was a connection error while contacting Keyrock");
 		}
-
-		return token.get();
-
 	}
 
 	public UserInfo getUserInfo(String token) throws Exception {
@@ -98,18 +101,22 @@ public class Keyrock7Connector extends FiwareIDMConnector {
 		RestClient client = new RestClient();
 		HttpResponse response = client.sendGetRequest(url, new ArrayList<Header>());
 
-		String returned_json = client.getResponseBodyAsString(response);
-		switch (client.getStatus(response)) {
+		if (response != null) {
+			String returned_json = client.getResponseBodyAsString(response);
+			switch (client.getStatus(response)) {
 
-		case 500:
-			GrantErrorMessage errorBody = new Gson().fromJson(returned_json, GrantErrorMessage.class);
-			throw new RuntimeException("[" + errorBody.getStatus() + "] " + errorBody.getMessage());
+			case 500:
+				GrantErrorMessage errorBody = new Gson().fromJson(returned_json, GrantErrorMessage.class);
+				throw new RuntimeException("[" + errorBody.getStatus() + "] " + errorBody.getMessage());
 
-		default:
-			userinfo = Optional.ofNullable(new Gson().fromJson(returned_json, UserInfo.class));
+			default:
+				userinfo = Optional.ofNullable(new Gson().fromJson(returned_json, UserInfo.class));
+			}
+
+			return userinfo.get();
+		} else {
+			throw new RuntimeException("There was a connection error while contacting Keyrock");
 		}
-
-		return userinfo.get();
 	}
 
 //	public static class Builder {
